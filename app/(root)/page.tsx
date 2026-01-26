@@ -1,4 +1,4 @@
-import { HeroBlock, Navbar, HowItWorks } from "./components";
+import { HeroBlock, Navbar, HowItWorks, Pricing } from "./components";
 
 export default function Home() {
     return (
@@ -8,6 +8,8 @@ export default function Home() {
             <HeroBlock />
 
             <HowItWorks />
+
+            <Pricing />
         </div>
     );
 }
