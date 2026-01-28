@@ -5,15 +5,14 @@ export const links = [
     },
     {
         name: "Pricing",
-        href: "#how-it-works",
+        href: "#pricing",
     },
     {
         name: "Contact",
-        href: "#how-it-works",
+        href: "#cta",
     },
     {
         name: "Dashboard",
         href: "/dashboard",
-    }
-    
-]
+    },
+];
