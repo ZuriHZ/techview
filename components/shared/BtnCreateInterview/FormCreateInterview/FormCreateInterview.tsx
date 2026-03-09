@@ -1,0 +1,137 @@
+"use client";
+import z from "zod";
+
+import {
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+} from "@/components/ui/form";
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select";
+import { Input } from "@/components/ui/input";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { formSchema } from "./FormCreateInterview.form";
+import { Button } from "@/components/ui/button";
+import { Mic } from "lucide-react";
+import { difficulty, roles } from "./FormCreateInterview.data";
+
+export function FormCreateInterview() {
+    const form = useForm<z.infer<typeof formSchema>>({
+        resolver: zodResolver(formSchema),
+        defaultValues: {
+            name: "",
+            role: "",
+            level: "",
+        },
+    });
+
+    const onSubmit = (value: z.infer<typeof formSchema>) => {
+        console.log(value);
+    };
+    return (
+        <Form {...form}>
+            <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="space-y-8 text-black"
+            >
+                <FormField
+                    control={form.control}
+                    name="name"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>Name of the interview</FormLabel>
+                            <FormControl>
+                                <Input
+                                    placeholder="Interview name"
+                                    {...field}
+                                />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                <FormField
+                    control={form.control}
+                    name="role"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>Select the role</FormLabel>
+                            <Select
+                                onValueChange={field.onChange}
+                                defaultValue={field.value}
+                            >
+                                <FormControl>
+                                    <SelectTrigger className="w-full">
+                                        <SelectValue placeholder="Select a role" />
+                                    </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                    {roles.map((role) => (
+                                        <SelectItem
+                                            key={role.label}
+                                            value={role.value}
+                                        >
+                                            <div className="flex items-center gap-2">
+                                                <span>{role.icon}</span>
+                                                <span>{role.label}</span>
+                                            </div>
+                                        </SelectItem>
+                                    ))}
+                                </SelectContent>
+                            </Select>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+
+                <FormField
+                    control={form.control}
+                    name="level"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>Select the difficulty</FormLabel>
+                            <Select
+                                onValueChange={field.onChange}
+                                defaultValue={field.value}
+                            >
+                                <FormControl>
+                                    <SelectTrigger className="w-full">
+                                        <SelectValue placeholder="Select a difficulty" />
+                                    </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                    {difficulty.map((level) => (
+                                        <SelectItem
+                                            key={level.label}
+                                            value={level.value}
+                                        >
+                                            {level.label}
+                                        </SelectItem>
+                                    ))}
+                                </SelectContent>
+                            </Select>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+
+                <Button
+                    type="submit"
+                    className="w-full bg-gradient-to-r from-purple-600 to-blue-600 font-bold py-3 px-6 rounded-lg hover:from-purple-700 hover:to-blue-700 transition-all duration-300 cursor-pointer"
+                >
+                    Start interview
+                    <Mic />
+                </Button>
+            </form>
+        </Form>
+    );
+}
