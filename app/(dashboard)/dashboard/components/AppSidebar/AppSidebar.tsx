@@ -60,7 +60,6 @@ export function AppSidebar() {
                     <BtnCreateInterview />
                 </SidebarGroup>
                 <SidebarGroup>
-                    <SidebarGroupLabel>Application</SidebarGroupLabel>
                     <SidebarGroupContent>
                         <SidebarMenu>
                             {items.map((item) => (

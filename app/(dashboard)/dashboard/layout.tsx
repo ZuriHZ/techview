@@ -1,7 +1,8 @@
 import { Metadata } from "next";
 import React from "react";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { AppSidebar } from "./dashboard/components";
+import { AppSidebar } from "./components";
+import { UserButton, Show } from "@clerk/nextjs";
 export const metadata: Metadata = {
     title: "Dashboard | Techview ",
     description: "Dashboard para el usuario",
@@ -18,9 +19,11 @@ export default function DashboardLayout({
                 <AppSidebar />
                 <main className="w-full min-h-screen p-6 ">
                     <div className="flex justify-between">
-                        <SidebarTrigger />
+                        <SidebarTrigger className="text-white" />
+                        <Show when="signed-in">
+                            <UserButton />
+                        </Show>
                     </div>
-
                     {children}
                 </main>
             </SidebarProvider>
