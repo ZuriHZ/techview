@@ -2,7 +2,7 @@ import { auth } from "@clerk/nextjs/server";
 import { db } from "@/lib/db";
 import {} from "lucide-react";
 import { CheckCircle, TrendingUp, Clock, ClipboardCheck } from "lucide-react";
-import { MetricCard } from "./components";
+import { InterviewsList, MetricCard } from "./components";
 import { title } from "process";
 import { success } from "zod";
 
@@ -67,6 +67,8 @@ export default async function DashboardPage() {
                     </div>
                 </div>
             </div>
+
+            <InterviewsList />
         </div>
     );
 }

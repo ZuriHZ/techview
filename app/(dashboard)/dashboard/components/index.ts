@@ -1,2 +1,3 @@
 export * from "./AppSidebar";
-export * from "./MetricCard"
+export * from "./MetricCard";
+export * from "./interviewsList";

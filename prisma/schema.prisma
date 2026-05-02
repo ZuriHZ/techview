@@ -40,6 +40,7 @@ model Interview{
   transcript Json?
 
   user User @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
 }
 
 model Payment {
