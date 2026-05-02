@@ -16,7 +16,7 @@ export function BtnCreateInterview() {
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <Button className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 font-bold py-3 px-6 rounded-lg hover:from-purple-700 hover:to-blue-700 transition-all duration-300 cursor-pointer">
+                <Button className="bg-linear-to-r from-blue-500 to-purple-600 font-bold py-3 px-6 rounded-lg hover:from-purple-700 hover:to-blue-700 transition-all duration-300 cursor-pointer">
                     Crear nueva entrevista
                 </Button>
             </DialogTrigger>
